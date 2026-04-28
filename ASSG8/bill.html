@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill</title>
+    <style>
+        .input{
+            display: flex;
+            justify-content: center;
+        }
+        .container{
+            width: 400px;
+            margin: 0 auto;
+            font-family: "Courier New", monospace;
+            align-items: center;
+            justify-content: center;
+            color: rgb(19, 19, 19);
+        }
+        .top{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .img{
+            width: 100px;
+            height: 100px;
+        }
+        .dine{
+            display: flex;
+            flex-direction: column;
+            font-weight: bolder;
+            font-size: 25px;
+            gap: 5px;
+        }
+        .address{
+            margin: 5px 0;
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .time{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 5px;
+            padding: 10px;
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+        }
+        .receipt-row {
+            display: grid;
+            grid-template-columns: 90px 90px 90px 90px;
+            column-gap: 10px;
+            margin: 6px 0;
+            }
+        .value {
+            text-align: left;
+        }
+        .quantity {
+            text-align: right;
+            margin-right: 12px;
+        }
+        #id1{
+            display: grid;
+            grid-template-columns: 5fr 1fr;
+            grid-column: 1/3;
+            text-align: left;
+            padding-left: 15px;
+        }
+        #id2{
+            display: grid;
+            grid-template-columns: 5fr 1fr;
+            grid-column: 1/3;
+            text-align: left;
+            padding-left: 15px;
+            font-weight: bold;
+        }
+        .right{
+            justify-self: end;
+            padding-right: 15px;
+        }
+        #total{
+            font-weight: bold;
+            text-align: right;
+            margin-right: 12px;
+        }
+        .item{
+            display: flex;
+            flex-direction: column;
+            padding: 15px 0;
+            gap: 5px;
+            border-bottom: 2px solid black;
+        }
+        .items{
+            display: flex;
+            justify-content: space-between;
+        }
+        .payment{
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            gap: 5px;
+        }
+        .bottom{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+        .bold{
+            font-weight: bold;
+        }
+        .thank{ 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="input">
+        <input type="text" id="name" value="" placeholder="Item Name">
+        <input type="number" id="quantity" value="" placeholder="Quantity">
+        <input type="number" id="price" value="" placeholder="Price">
+        <input type="button" id="btn1" value="Add"/>
+    </div>
+    <div class="container">
+        <div class="top">
+            <div class="img">
+                <img src="./logo.png" alt="">
+            </div>
+            <div class="dine">
+                <div>DINEFINE</div>
+                <div>RESTAURANT</div>
+            </div>
+            <div class="address">
+                <div>123 CULINARY AVENUE</div>
+                <div>DOWNTOWN DISTRICT</div>
+                <div>PHONE: (555) 123-4567</div>
+                <div>WWW.DINEFINE.COM</div>
+            </div>
+        </div>
+        <div class="time">
+            <div>9/30/2025 &nbsp;&nbsp;08:15 PM</div>
+            <div class="receipt-row">
+                <span class="label">RECEIPT:</span>
+                <span class="value">#R-2547</span>
+
+                <span class="label">TABLE:</span>
+                <span class="quantity">12</span>
+            </div>
+
+            <div class="receipt-row">
+                <span class="label">SERVER:</span>
+                <span class="value">MARIA G.</span>
+
+                <span class="label">GUESTS:</span>
+                <span class="quantity">2</span>
+            </div>
+
+        </div>
+        <div class="item">
+            <div id="id1"> 
+            </div>
+            <div id="id2">Total
+                <div id="total">0.00</div>
+            </div>
+        </div>
+        <div class="payment">
+            <div class="items">
+                <div>CARD :</div>
+                <div>....9981</div>
+            </div>
+            <div class="items">
+                <div>TYPE :</div>
+                <div>MASTERCARD</div>
+            </div>
+            <div class="items">
+                <div>ENTRY :</div>
+                <div>CONTACTLESS</div>
+            </div>
+            <div class="items">
+                <div>TIME :</div>
+                <div>INVALID DATE</div>
+            </div>
+            <div class="items">
+                <div>REF :</div>
+                <div>REF : 892347612</div>
+            </div>
+            <div class="items">
+                <div>STATUS :</div>
+                <div>APPROVED</div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div>TIP IS NOT INCLUDED.</div>
+            <div>PLEASE COME AGAIN !</div>
+            <div class="thank">
+                <div>THANK YOU FOR DINING WITH US !</div>
+                <img src="./barcode.png" alt="">
+                <div>254720250930</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getitem(){
+            let name = document.querySelector("#name")
+            let quantity = document.querySelector("#quantity")
+            let price = document.querySelector("#price")
+            let id1 = document.querySelector("#id1")
+            let total = document.querySelector("#total")
+
+            newitem  = document.createElement("div")
+            newitem.textContent = quantity.value+"X "+name.value;
+
+            newprice  = document.createElement("div")
+            newprice.className = "right"
+            newprice.textContent ="$"+price.value*quantity.value;
+            
+            id1.appendChild(newitem)
+            id1.appendChild(newprice)
+
+            totalprice += quantity.value*price.value
+            total.textContent = "$"+totalprice
+        }
+        totalprice = 0
+        btn = document.querySelector("#btn1")
+        btn.addEventListener("click", getitem)
+    </script>
+</body>
+</html>
