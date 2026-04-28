@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="./assignment10.js"></script>
+	<style>
+		body{
+			font-family:sans-serif;
+			background:#eee;
+		}
+		.post{
+			display:flex;
+			flex-direction:column;
+			background:#fff;
+			border-radius:10px;
+			border:1px solid #ccc;
+			margin:10px;
+			padding:5px 10px;
+		}
+		.main_container{
+			margin:20px auto;
+			width:500px;
+		}
+		.avatar{
+			width:35px;
+			border-radius:50%;
+			margin-right:10px;
+		}
+		.userbar{
+			display:flex;
+			align-items: center;
+			margin-bottom:10px;
+		}
+		.infobar{
+			display:flex;
+			justify-content: space-evenly;
+			margin:10px;
+			padding:10px 0;
+			border-top:1px solid #ddd;
+		}
+		.count{
+			display:flex;
+			margin:10px;
+			padding:10px 0;
+			border-top:1px solid #ddd;
+		}
+		.bold{
+			font-weight:bold;
+		}
+		</style>
+</head>
+<body>
+	<div class="main_container" id="main"></div>
+	<script>
+		const main=document.querySelector("#main")
+		console.log("test")
+		for(let i=0;i<all_post.posts.length;i++)
+		{
+			const d=document.createElement("div")
+			const user=document.createElement("div")
+			const content=document.createElement("div")
+			const likes=document.createElement("div")
+			const reposts=document.createElement("div")
+			const bookmarks=document.createElement("div")
+			const img=document.createElement("img")
+			const userbar=document.createElement("div")
+			userbar.classList.add("userbar")
+			const infobar=document.createElement("div")
+			infobar.classList.add("infobar")
+			const count=document.createElement("div")
+			count.classList.add("count")
+			
+			user.textContent=all_post.posts[i].username;
+			content.textContent=all_post.posts[i].content;
+			likes.textContent=all_post.posts[i].likes + "likes";
+			reposts.textContent=all_post.posts[i].reposts +"reposts";
+			bookmarks.textContent=all_post.posts[i].bookmarks+" bookmarks";
+			img.src=all_post.posts[i].avatar;
+			
+			d.classList.add("post")
+			img.classList.add("avatar")
+			user.classList.add("bold")
+			user.style.color="#000"
+			likes.classList.add("bold")
+			reposts.classList.add("bold")
+			bookmarks.classList.add("bold")
+			
+			userbar.appendChild(img)
+			userbar.appendChild(user)
+			d.appendChild(userbar)
+			count.appendChild(content)
+			d.appendChild(count)
+			infobar.appendChild(likes)
+			infobar.appendChild(reposts)
+			infobar.appendChild(bookmarks)
+			d.appendChild(infobar)
+			main.appendChild(d)
+		}
+	</script>
+</body>
+</html>
